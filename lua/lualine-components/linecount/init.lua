@@ -21,7 +21,7 @@ function M:update_status()
 		count = count .. "K"
 	end
 
-	return count
+	return tostring(count)
 end
 
 return M
