@@ -1,9 +1,5 @@
 local M = require("lualine.component"):extend()
 
-function M:init(options)
-	M.super.init(self, options)
-end
-
 function M:update_status()
 	local count = vim.api.nvim_buf_line_count(0)
 

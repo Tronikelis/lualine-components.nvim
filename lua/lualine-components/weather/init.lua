@@ -4,8 +4,6 @@ local default_options = {
 
 local M = require("lualine.component"):extend()
 
-M.weather = ""
-
 function M:update_weather()
 	local cmd = 'curl -s -m 30 "wttr.in/' .. self.options.city .. '?format=%t" | tr -d "[:blank:]"'
 
@@ -28,6 +26,8 @@ end
 function M:init(options)
 	M.super.init(self, options)
 	self.options = vim.tbl_deep_extend("keep", self.options or {}, default_options)
+
+	self.weather = ""
 
 	self.update_weather(self)
 end
