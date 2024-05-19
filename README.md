@@ -35,3 +35,13 @@ Shows current buffer's linecount
 #### Options
 
 No options
+
+## smol-mode
+
+`require("lualine-components.smol-mode")`
+
+Shows mode but only the first character
+
+#### Options
+
+No options
