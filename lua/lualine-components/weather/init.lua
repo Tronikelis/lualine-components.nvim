@@ -6,14 +6,14 @@ local M = require("lualine.component"):extend()
 
 M.weather = ""
 
-M.update_weather = function(self)
+function M:update_weather()
 	local cmd = 'curl -s -m 30 "wttr.in/' .. self.options.city .. '?format=%t" | tr -d "[:blank:]"'
 
 	vim.fn.jobstart(cmd, {
 		detach = false,
 		stdout_buffered = true,
 		on_stdout = function(chan_id, stdout)
-			M.weather = stdout[1]
+			self.weather = stdout[1]
 		end,
 		on_exit = function()
 			local mins30 = 1000 * 60 * 30
@@ -25,14 +25,14 @@ M.update_weather = function(self)
 	})
 end
 
-M.init = function(self, options)
+function M:init(options)
 	M.super.init(self, options)
 	self.options = vim.tbl_deep_extend("keep", self.options or {}, default_options)
 
 	self.update_weather(self)
 end
 
-M.update_status = function(self)
+function M:update_status()
 	return self.weather
 end
 
