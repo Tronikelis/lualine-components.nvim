@@ -1,4 +1,6 @@
-return function()
+local M = require("lualine.component").extend()
+
+M.update_status = function()
 	local count = vim.api.nvim_buf_line_count(0)
 
 	if count >= 1000 then
@@ -17,3 +19,5 @@ return function()
 
 	return count
 end
+
+return M
