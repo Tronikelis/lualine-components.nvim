@@ -2,7 +2,7 @@ local default_options = {
 	city = "Vilnius",
 }
 
-local M = require("lualine.component").extend()
+local M = require("lualine.component"):extend()
 
 M.weather = ""
 

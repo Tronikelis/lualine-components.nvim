@@ -1,4 +1,4 @@
-local M = require("lualine.component").extend()
+local M = require("lualine.component"):extend()
 
 M.update_status = function()
 	local count = vim.api.nvim_buf_line_count(0)
