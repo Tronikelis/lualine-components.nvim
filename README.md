@@ -45,3 +45,13 @@ Shows mode but only the first character
 #### Options
 
 No options
+
+## branch-oil
+
+`require("lualine-components.branch-oil")`
+
+Patched lualine branch component to show branch in oil buffers
+
+#### Options
+
+Same as lualine
