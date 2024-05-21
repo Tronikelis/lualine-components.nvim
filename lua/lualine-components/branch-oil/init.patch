@@ -1,0 +1,13 @@
+diff --git a/lua/lualine/components/branch/init.lua b/lua/lualine/components/branch/init.lua
+index 7e75544..a09b398 100644
+--- a/lua/lualine/components/branch/init.lua
++++ b/lua/lualine/components/branch/init.lua
+@@ -2,7 +2,7 @@
+ -- MIT license, see LICENSE for more details.
+ local M = require('lualine.component'):extend()
+ local modules = require('lualine_require').lazy_require {
+-  git_branch = 'lualine.components.branch.git_branch',
++  git_branch = 'lualine-components.branch-oil.git_branch',
+   highlight = 'lualine.highlight',
+   utils = 'lualine.utils.utils',
+ }
