@@ -22,20 +22,6 @@ Patched version of lualine branch component with oil support (shows branch in oi
 
 Same as lualine
 
-## weather
-
-`require("lualine-components.weather")`
-
-Shows temperature from `wttr.in`
-
-#### Options
-
-```
-{
-    city = "Vilnius"
-}
-```
-
 ## linecount
 
 `require("lualine-components.weather")`
