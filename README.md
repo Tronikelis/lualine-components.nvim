@@ -12,16 +12,6 @@ Patched version of lualine filename component with oil support
 
 Same as lualine
 
-## branch-oil
-
-`require("lualine-components.branch-oil")`
-
-Patched version of lualine branch component with oil support (shows branch in oil buffer)
-
-#### Options
-
-Same as lualine
-
 ## linecount
 
 `require("lualine-components.weather")`
