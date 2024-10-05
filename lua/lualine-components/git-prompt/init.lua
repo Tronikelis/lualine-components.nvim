@@ -16,7 +16,7 @@ end
 
 function M:update_status()
 	if self._running then
-		return
+		return self._prompt
 	end
 	self._running = true
 
