@@ -31,3 +31,15 @@ Shows mode but only the first character
 #### Options
 
 No options
+
+## git-prompt
+
+`require("lualine-components.git-prompt")`
+
+Shows the `?M` git prompt from `git status`
+
+![example](https://github.com/user-attachments/assets/bfff87a2-33e6-4341-abe6-bd479214dbfa)
+
+#### Options
+
+No options
