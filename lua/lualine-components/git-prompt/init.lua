@@ -31,7 +31,7 @@ function M:update_status()
 			lines[i] = lines[i]:sub(1, 1)
 		end
 
-		vim.fn.uniq(lines)
+		lines = vim.fn.uniq(lines)
 		table.sort(lines)
 
 		self._prompt = vim.fn.join(lines, "")
