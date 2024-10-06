@@ -1,5 +1,9 @@
 local M = require("lualine.component"):extend()
 
+-- making these global, because git runs on cwd anyway, so all buffers will be the same
+local prompt = ""
+local running = false
+
 function M:init(options)
 	if not options.color then
 		local fg = vim.api.nvim_get_hl(0, { name = "Error" }).fg
@@ -9,16 +13,13 @@ function M:init(options)
 	end
 
 	M.super.init(self, options)
-
-	self._prompt = ""
-	self._running = false
 end
 
 function M:update_status()
-	if self._running then
-		return self._prompt
+	if running then
+		return prompt
 	end
-	self._running = true
+	running = true
 
 	local function parse(git_status)
 		if not git_status then
@@ -34,16 +35,16 @@ function M:update_status()
 		lines = vim.fn.uniq(lines)
 		table.sort(lines)
 
-		self._prompt = vim.fn.join(lines, "")
+		prompt = vim.fn.join(lines, "")
 	end
 	parse = vim.schedule_wrap(parse)
 
 	vim.system({ "git", "status", "--porcelain" }, {}, function(obj)
 		parse(obj.stdout)
-		self._running = false
+		running = false
 	end)
 
-	return self._prompt
+	return prompt
 end
 
 return M
