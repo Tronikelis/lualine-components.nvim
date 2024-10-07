@@ -26,16 +26,22 @@ function M:update_status()
 			return
 		end
 
+		local statuses = {}
+
 		local lines = vim.split(git_status, "\n", { trimempty = true })
-		for i, _ in ipairs(lines) do
-			lines[i] = vim.trim(lines[i])
-			lines[i] = lines[i]:sub(1, 1)
+		for _, line in ipairs(lines) do
+			line = vim.trim(line)
+			line = vim.split(line, " ", { trimempty = true })[1]
+
+			for _, status in ipairs(vim.split(line, "", { trimempty = true })) do
+				table.insert(statuses, status)
+			end
 		end
 
-		lines = vim.fn.uniq(lines)
-		table.sort(lines)
+		statuses = vim.fn.uniq(statuses)
+		table.sort(statuses)
 
-		prompt = vim.fn.join(lines, "")
+		prompt = vim.fn.join(statuses, "")
 	end
 	parse = vim.schedule_wrap(parse)
 
