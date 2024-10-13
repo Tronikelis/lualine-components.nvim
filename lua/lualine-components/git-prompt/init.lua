@@ -48,7 +48,7 @@ function M:init(options)
 	end
 
 	self:parse_git_status()
-	vim.api.nvim_create_autocmd({ "FocusGained", "BufWritePost" }, {
+	vim.api.nvim_create_autocmd({ "FocusGained", "BufWritePost", "DirChanged" }, {
 		callback = function()
 			self:parse_git_status()
 		end,
