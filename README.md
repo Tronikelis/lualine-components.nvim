@@ -56,3 +56,15 @@ Shows the first active lsp with options to filter / sort
 - `sort_clients`: function passed to `table.sort(clients, the_function)`
 - `exclude`: array of clients to exclude
 - `refresh_autocmd`: refresh on these autocmds, passed to `vim.api.nvim_create_autocmd`
+
+Default options
+
+```lua
+{
+    icon = "󰣖",
+    filter = { bufnr = 0 },
+    sort_clients = sort_clients,
+    exclude = {},
+    refresh_autocmd = { "LspAttach", "LspDetach", "BufEnter" },
+}
+```
