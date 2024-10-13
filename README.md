@@ -43,3 +43,16 @@ Shows the `?M` git prompt from `git status`
 #### Options
 
 No options
+
+## active-lsp
+
+`require("lualine-components.active-lsp")`
+
+Shows the first active lsp with options to filter / sort
+
+#### Options
+
+- `filter`: table passed to `vim.lsp.get_clients(filter)`
+- `sort_clients`: function passed to `table.sort(clients, the_function)`
+- `exclude`: array of clients to exclude
+- `refresh_autocmd`: refresh on these autocmds, passed to `vim.api.nvim_create_autocmd`
