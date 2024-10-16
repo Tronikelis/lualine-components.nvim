@@ -16,7 +16,7 @@ function M:parse_git_status()
 				return
 			end
 
-			local statuses = {}
+			local status_map = {}
 
 			local lines = vim.split(out.stdout, "\n", { trimempty = true })
 			for _, line in ipairs(lines) do
@@ -24,11 +24,11 @@ function M:parse_git_status()
 				line = vim.split(line, " ", { trimempty = true })[1]
 
 				for _, status in ipairs(vim.split(line, "", { trimempty = true })) do
-					table.insert(statuses, status)
+					status_map[status] = true
 				end
 			end
 
-			statuses = vim.fn.uniq(statuses)
+			local statuses = vim.tbl_keys(status_map)
 			table.sort(statuses)
 
 			self.prompt = vim.fn.join(statuses, "")
