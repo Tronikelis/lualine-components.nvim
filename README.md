@@ -2,6 +2,9 @@
 
 My collection of custom lualine components
 
+
+
+
 ## filename-oil
 
 `require("lualine-components.filename-oil")`
@@ -12,9 +15,12 @@ Patched version of lualine filename component with oil support
 
 Same as lualine
 
+
+
+
 ## linecount
 
-`require("lualine-components.weather")`
+`require("lualine-components.linecount")`
 
 Shows current buffer's linecount
 
@@ -22,15 +28,9 @@ Shows current buffer's linecount
 
 No options
 
-## smol-mode
 
-`require("lualine-components.smol-mode")`
 
-Shows mode but only the first character
 
-#### Options
-
-No options
 
 ## git-prompt
 
@@ -44,6 +44,9 @@ Shows the `?M` git prompt from `git status`
 
 No options
 
+
+
+
 ## active-lsp
 
 `require("lualine-components.active-lsp")`
@@ -56,6 +59,9 @@ Shows the first active lsp with options to filter / sort
 - `sort_clients`: function passed to `table.sort(clients, the_function)`
 - `exclude`: array of clients to exclude
 - `refresh_autocmd`: refresh on these autocmds, passed to `vim.api.nvim_create_autocmd`
+
+
+
 
 Default options
 
