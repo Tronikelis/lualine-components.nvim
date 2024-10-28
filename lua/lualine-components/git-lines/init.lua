@@ -30,7 +30,16 @@ function M:parse_git_diff()
 	self.running = true
 
 	vim.system(
-		{ "git", "--no-pager", "--no-optional-locks", "diff", "--numstat", "--no-color", "--no-ext-diff" },
+		{
+			"git",
+			"--no-pager",
+			"--no-optional-locks",
+			"diff",
+			"--numstat",
+			"--no-color",
+			"--no-ext-diff",
+			unpack(self.options.diff_args),
+		},
 		{},
 		vim.schedule_wrap(function(out)
 			self.running = false
@@ -60,6 +69,7 @@ function M:init(options)
 	M.super.init(
 		self,
 		vim.tbl_deep_extend("force", {
+			diff_args = {},
 			diff_color = {
 				files_changed = {
 					fg = "None",
