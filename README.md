@@ -55,7 +55,10 @@ Shows the `(1) +10-1` files changed / added / removed lines globally
 
 diff_color same as `diff` component in lualine
 
+diff_args extra args to git
+
 ```
+diff_args = {}
 diff_color = {
     files_changed = {
         fg = "None",
