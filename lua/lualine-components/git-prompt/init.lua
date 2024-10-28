@@ -7,7 +7,7 @@ function M:parse_git_status()
 	self.running = true
 
 	vim.system(
-		{ "git", "status", "--porcelain" },
+		{ "git", "--no-optional-locks", "status", "--porcelain" },
 		{},
 		vim.schedule_wrap(function(out)
 			self.running = false
