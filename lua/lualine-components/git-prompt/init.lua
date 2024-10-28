@@ -7,7 +7,7 @@ function M:parse_git_status()
 	self.running = true
 
 	vim.system(
-		{ "git", "--no-optional-locks", "status", "--porcelain" },
+		{ "git", "--no-pager", "--no-optional-locks", "status", "--porcelain" },
 		{},
 		vim.schedule_wrap(function(out)
 			self.running = false
@@ -37,15 +37,15 @@ function M:parse_git_status()
 end
 
 function M:init(options)
+	M.super.init(
+		self,
+		vim.tbl_deep_extend("force", {
+			color = { fg = string.format("#%x", vim.api.nvim_get_hl(0, { name = "Error" }).fg) },
+		}, options)
+	)
+
 	self.prompt = ""
 	self.running = false
-
-	if not options.color then
-		local fg = vim.api.nvim_get_hl(0, { name = "Error" }).fg
-		options.color = {
-			fg = string.format("#%x", fg),
-		}
-	end
 
 	self:parse_git_status()
 	vim.api.nvim_create_autocmd({ "FocusGained", "BufWritePost", "DirChanged" }, {
@@ -53,8 +53,6 @@ function M:init(options)
 			self:parse_git_status()
 		end,
 	})
-
-	M.super.init(self, options)
 end
 
 function M:update_status()

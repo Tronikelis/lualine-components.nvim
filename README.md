@@ -45,7 +45,37 @@ Shows the `?M` git prompt from `git status`
 No options
 
 
+## git-lines
 
+`require("lualine-components.git-lines")`
+
+Shows the `(1) +10-1` files changed / added / removed lines globally
+
+#### Options
+
+diff_color same as `diff` component in lualine
+
+```
+diff_color = {
+    files_changed = {
+        fg = "None",
+    },
+    added = {
+        fg = modules.utils.extract_color_from_hllist(
+            "fg",
+            { "LuaLineDiffAdd", "GitSignsAdd", "GitGutterAdd", "DiffAdded", "DiffAdd" },
+            "#90ee90"
+        ),
+    },
+    removed = {
+        fg = modules.utils.extract_color_from_hllist(
+            "fg",
+            { "LuaLineDiffDelete", "GitSignsDelete", "GitGutterDelete", "DiffRemoved", "DiffDelete" },
+            "#ff0038"
+        ),
+    },
+},
+```
 
 ## active-lsp
 

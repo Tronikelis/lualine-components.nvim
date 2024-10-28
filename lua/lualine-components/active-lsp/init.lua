@@ -19,15 +19,16 @@ function M:update_prompt()
 end
 
 function M:init(options)
-	M.super.init(self, options)
-
-	self.options = vim.tbl_deep_extend("force", {
-		icon = "󰣖",
-		filter = { bufnr = 0 },
-		sort_clients = sort_clients,
-		exclude = {},
-		refresh_autocmd = { "LspAttach", "LspDetach", "BufEnter" },
-	}, self.options or {})
+	M.super.init(
+		self,
+		vim.tbl_deep_extend("force", {
+			icon = "󰣖",
+			filter = { bufnr = 0 },
+			sort_clients = sort_clients,
+			exclude = {},
+			refresh_autocmd = { "LspAttach", "LspDetach", "BufEnter" },
+		}, options)
+	)
 
 	self.prompt = ""
 
